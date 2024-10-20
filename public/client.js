@@ -63,8 +63,12 @@ conversationListButton.addEventListener('click', () => {
 });
 
 closeModalButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        closeAllModals();
+    button.addEventListener('click', (event) => {
+        const modal = event.target.closest('.modal');
+        if (modal) {
+            modal.style.display = 'none';
+        }
+        document.body.classList.remove('modal-open');
     });
 });
 
