@@ -1,0 +1,329 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --primary-color: #1db954;
+    --secondary-color: #121212;
+    --accent-color: #1ed760;
+    --text-color: #e0e0e0;
+    --background-color: #181818;
+    --border-color: #282828;
+    --font-family: 'Roboto', sans-serif;
+}
+
+body.light-theme {
+    --primary-color: #007bff;
+    --secondary-color: #f5f5f5;
+    --accent-color: #0056b3;
+    --text-color: #333333;
+    --background-color: #ffffff;
+    --border-color: #dddddd;
+}
+
+html, body {
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--secondary-color);
+}
+
+.chat-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--background-color);
+    border-radius: 0;
+}
+
+.chat-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+    z-index: 100;
+}
+
+.chat-header h1 {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.chat-header i {
+    margin-right: 10px;
+    color: var(--primary-color);
+}
+
+.theme-toggle {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 24px;
+    cursor: pointer;
+    margin-left: auto;
+    outline: none;
+}
+
+.theme-toggle:focus {
+    outline: none;
+}
+
+.icon-button {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 24px;
+    cursor: pointer;
+    margin-left: 10px;
+    outline: none;
+}
+
+.icon-button:focus {
+    outline: none;
+}
+
+.icon-button:hover {
+    color: var(--primary-color);
+}
+
+.chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 100px 20px 80px;
+    background-color: var(--secondary-color);
+    display: flex;
+    flex-direction: column;
+}
+
+.message {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.message.ai-message {
+    justify-content: flex-start;
+}
+
+.message.user-message {
+    justify-content: flex-end;
+}
+
+.message-content {
+    max-width: 75%;
+    padding: 12px 20px;
+    border-radius: 20px;
+    font-size: 16px;
+    line-height: 1.5;
+    word-wrap: break-word;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    position: relative;
+}
+
+.message.user-message .message-content {
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+}
+
+.message-image {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-top: 5px;
+}
+
+.input-area {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    padding: 15px;
+    background-color: var(--background-color);
+    border-top: 1px solid var(--border-color);
+    z-index: 100;
+    align-items: center;
+}
+
+.input-area button {
+    margin-left: 10px;
+    padding: 0 15px;
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 20px;
+    transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#user-input {
+    flex: 1;
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 30px;
+    font-size: 16px;
+    outline: none;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    transition: border-color 0.3s;
+}
+
+#user-input::placeholder {
+    color: #bbb;
+}
+
+#user-input:focus {
+    border-color: var(--primary-color);
+}
+
+#send-button i {
+    vertical-align: middle;
+}
+
+#send-button:hover {
+    background-color: var(--accent-color);
+}
+
+#image-button {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    border: 1px solid var(--border-color);
+}
+
+#image-button:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+#image-button i {
+    font-size: 22px;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 200;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    background-color: var(--background-color);
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid var(--border-color);
+    width: 80%;
+    max-width: 500px;
+    color: var(--text-color);
+    border-radius: 10px;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.close-button {
+    color: var(--text-color);
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: var(--primary-color);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#conversation-list {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 20px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+#conversation-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid var(--border-color);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#conversation-list li:hover {
+    background-color: var(--secondary-color);
+}
+
+#conversation-list .button-container {
+    display: flex;
+    gap: 10px;
+}
+
+#conversation-list button {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 16px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    padding: 5px;
+}
+
+#conversation-list button:hover {
+    color: var(--primary-color);
+}
+
+#edit-conversation-name-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+}
+
+#save-conversation-name {
+    padding: 10px 20px;
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.modal-open .chat-messages {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+@media (max-width: 600px) {
+    .message-content {
+        max-width: 85%;
+    }
+}

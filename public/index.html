@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta Tags -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Chatbot</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet" />
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <!-- KaTeX CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.css" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <div class="chat-container">
+        <header class="chat-header">
+            <h1><i class="fas fa-robot"></i> AI Chatbot</h1>
+            <!-- Theme Toggle Button -->
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+                <i class="fas fa-sun"></i>
+            </button>
+            <!-- New Conversation Button -->
+            <button id="new-conversation" class="icon-button" aria-label="New Conversation">
+                <i class="fas fa-plus"></i>
+            </button>
+            <!-- Conversation List Button -->
+            <button id="conversation-list-button" class="icon-button" aria-label="Conversations">
+                <i class="fas fa-comments"></i>
+            </button>
+        </header>
+
+        <!-- Conversation List Modal -->
+        <div id="conversation-list-modal" class="modal">
+            <div class="modal-content">
+                <span id="close-modal" class="close-button">&times;</span>
+                <h2>Your Conversations</h2>
+                <ul id="conversation-list"></ul>
+            </div>
+        </div>
+
+        <!-- Edit Conversation Name Modal -->
+        <div id="edit-conversation-name-modal" class="modal">
+            <div class="modal-content">
+                <span id="close-edit-modal" class="close-button">&times;</span>
+                <h2>Edit Conversation Name</h2>
+                <input type="text" id="edit-conversation-name-input" placeholder="Enter new name">
+                <button id="save-conversation-name">Save</button>
+            </div>
+        </div>
+
+        <div id="chat-messages" class="chat-messages">
+        </div>
+        <div class="input-area">
+            <input type="text" id="user-input" placeholder="Type your message..." autocomplete="off" />
+            <input type="file" id="image-input" accept="image/*" style="display: none;" />
+            <button id="image-button" aria-label="Upload Image"><i class="fas fa-image"></i></button>
+            <button id="send-button" aria-label="Send Message"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+    <!-- KaTeX JS -->
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.js"></script>
+    <!-- Custom JS -->
+    <script src="client.js"></script>
+</body>
+</html>
